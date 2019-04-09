@@ -7,3 +7,22 @@ before_install:
 
 script:
   - docker run busha/react-demo npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "react-demo"
+  env: "ReactDemo-env"
+  bucket_name: "elasticbeanstalk-us-east-2-593656954361"
+  bucket_path: "react-demo"
+
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+    
+
+
+
+
